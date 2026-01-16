@@ -289,3 +289,120 @@ with st.expander("💡 과제 2 예시 답안"):
             st.warning("📊 판정: 과체중")
         else:
             st.error("📊 판정: 비만")
+            import streamlit as st
+
+st.set_page_config(page_title="BMI 계산기", page_icon="💪")
+
+st.title("BMI 계산기")
+
+st.write("신장과 체중을 입력하고 **계산하기** 버튼을 눌러주세요.")
+
+# 신장 입력 (cm)
+height_input_type = st.radio("신장 입력 방식 선택", ("숫자 입력", "슬라이더"), horizontal=True)
+
+if height_input_type == "숫자 입력":
+    height_cm = st.number_input("신장 (cm)", min_value=100.0, max_value=250.0, value=170.0, step=0.1)
+else:
+    height_cm = st.slider("신장 (cm)", min_value=100, max_value=250, value=170, step=1)
+    height_cm = float(height_cm)  # 계산 편의를 위해 float으로 변환
+
+# 체중 입력 (kg)
+weight_input_type = st.radio("체중 입력 방식 선택", ("숫자 입력", "슬라이더"), horizontal=True)
+
+if weight_input_type == "숫자 입력":
+    weight_kg = st.number_input("체중 (kg)", min_value=30.0, max_value=200.0, value=65.0, step=0.1)
+else:
+    weight_kg = st.slider("체중 (kg)", min_value=30, max_value=200, value=65, step=1)
+    weight_kg = float(weight_kg)
+
+# 계산하기 버튼
+if st.button("계산하기"):
+    # cm -> m 변환
+    height_m = height_cm / 100.0
+
+    if height_m <= 0:
+        st.error("신장은 0보다 커야 합니다.")
+    else:
+        bmi = weight_kg / (height_m * height_m)
+        bmi_rounded = round(bmi, 2)
+
+        # BMI 판정
+        if bmi < 18.5:
+            status = "저체중"
+        elif 18.5 <= bmi <= 22.9:
+            status = "정상"
+        elif 23 <= bmi <= 24.9:
+            status = "과체중"
+        else:  # bmi ≥ 25
+            status = "비만"
+
+        st.subheader("결과")
+        st.write(f"**BMI:** {bmi_rounded}")
+        st.write(f"**판정:** {status}")
+        import streamlit as st
+
+st.set_page_config(page_title="BMI 계산기", page_icon="💪")
+
+# 버튼 색상 커스텀 (빨간색)
+st.markdown(
+    """
+    <style>
+    div.stButton > button:first-child {
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+        height: 3em;
+        width: 10em;
+        font-weight: bold;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.title("BMI 계산기")
+
+st.write("신장과 체중을 입력하고 **bmi계산기** 버튼을 눌러주세요.")
+
+# 신장 입력 (cm)
+height_input_type = st.radio("신장 입력 방식 선택", ("숫자 입력", "슬라이더"), horizontal=True)
+
+if height_input_type == "숫자 입력":
+    height_cm = st.number_input("신장 (cm)", min_value=100.0, max_value=250.0, value=170.0, step=0.1)
+else:
+    height_cm = st.slider("신장 (cm)", min_value=100, max_value=250, value=170, step=1)
+    height_cm = float(height_cm)
+
+# 체중 입력 (kg)
+weight_input_type = st.radio("체중 입력 방식 선택", ("숫자 입력", "슬라이더"), horizontal=True)
+
+if weight_input_type == "숫자 입력":
+    weight_kg = st.number_input("체중 (kg)", min_value=30.0, max_value=200.0, value=65.0, step=0.1)
+else:
+    weight_kg = st.slider("체중 (kg)", min_value=30, max_value=200, value=65, step=1)
+    weight_kg = float(weight_kg)
+
+# 계산하기 버튼 → 빨간색, 텍스트: bmi계산기
+if st.button("bmi계산기"):
+    height_m = height_cm / 100.0
+
+    if height_m <= 0:
+        st.error("신장은 0보다 커야 합니다.")
+    else:
+        bmi = weight_kg / (height_m * height_m)
+        bmi_rounded = round(bmi, 2)
+
+        if bmi < 18.5:
+            status = "저체중"
+        elif 18.5 <= bmi <= 22.9:
+            status = "정상"
+        elif 23 <= bmi <= 24.9:
+            status = "과체중"
+        else:
+            status = "비만"
+
+        st.subheader("결과")
+        st.write(f"**BMI:** {bmi_rounded}")
+        st.write(f"**판정:** {status}")
+
+

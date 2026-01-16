@@ -3,10 +3,7 @@
 학습 목표: 페이지 구조를 체계적으로 구성하기
 """
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-
+c
 st.set_page_config(
     page_title="레이아웃 배우기",
     page_icon="🎨",
