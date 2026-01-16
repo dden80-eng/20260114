@@ -13,7 +13,7 @@ st.header("1. 제목과 헤더")
 st.subheader("이것은 소제목입니다")
 
 st.write("""
-Streamlit은 다양한 방식으로 텍스트를 출력할 수 있습니다.
+Streamlit은 다양한 방식으로 텍스트를 출력할 수 있습니다.  
 각 함수의 용도를 이해하고 적절히 사용하는 것이 중요합니다.
 """)
 
@@ -107,7 +107,7 @@ st.markdown("> 누구나 코딩을 할 수 있다. - 박태근")
 
 # 인터넷상 이미지
 st.caption("인터넷상 이미지 표시")
-st.image("https://i0.wp.com/magazine.contenta.co/wp-content/uploads/2021/02/1-1.jpg?ssl=1")
+st.image("https://i0.wp.com/magazine.contenta.co/wp-content/uploads/2021/02/1-1.jpg?ssl=1",use_container_width=True)
 
 # 이미지 사이즈를 화면에 맞추고싶다면? 강제로 늘릴 수 있음
 st.image("https://placehold.co/300x300")
@@ -149,3 +149,59 @@ with st.expander("💡 예시 답안 보기"):
     """)
     
     st.info("이 기술은 2027년 상용화될 예정입니다.")
+    import streamlit as st
+
+# 1. 기사 제목
+st.title("전기차 보조금 축소, 소비자들은 '눈치보기'…판매 위축 우려")
+
+# 2. 작성자와 날짜
+st.caption("작성자: 홍길동 기자 | 작성일: 2023-05-22")
+
+# 3. 기사 이미지 (URL 사용)
+st.image(
+    "https://image.imnews.imbc.com/news/2023/econo/article/__icsFiles/afieldfile/2023/05/22/p230522-6.jpg",
+    caption="전기차 충전소 전경 (사진=자료사진)",
+    use_column_width=True
+)
+
+# 4. 본문 내용 (Markdown)
+st.markdown(
+"""
+정부가 내년부터 전기차 보조금을 축소하기로 하면서 소비자들의 구매 심리가 위축될 수 있다는 우려가 나오고 있습니다.  
+업계에서는 급격한 보조금 축소가 이어질 경우 완성차 업체들의 전기차 판매 전략에도 차질이 불가피할 것으로 보고 있습니다.
+
+전문가들은 충전 인프라 확충과 같은 **비금전적 지원 정책**을 병행해  
+보조금 축소에 따른 시장 충격을 완화해야 한다고 강조합니다.
+
+또한, 탄소중립 목표 달성을 위해서는 전기차 보급 확대뿐 아니라  
+재생에너지 비중 확대, 배터리 재활용 생태계 구축 등 종합적인 대책이 필요하다고 지적합니다.
+"""
+)
+
+# 5. 관련 정보 박스
+st.info(
+"""
+**관련 정보**
+
+- 환경부 전기차 보조금 안내: https://ev.or.kr  
+- 지자체별 추가 보조금 정책은 각 지자체 홈페이지 참고  
+- 전기차 충전소 위치 확인: 'EV Infra', '환경부 EV' 등의 모바일 앱 활용 가능
+"""
+)
+
+# 6. 코드나 데이터 예시
+sample_data_code = """
+import pandas as pd
+
+# 연도별 전기차 보급 대수 예시 데이터
+data = {
+    "year": [2019, 2020, 2021, 2022, 2023],
+    "ev_count": [90000, 130000, 210000, 350000, 500000]
+}
+
+df = pd.DataFrame(data)
+print(df)
+"""
+
+st.code(sample_data_code, language="python")
+

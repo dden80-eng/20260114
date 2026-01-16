@@ -9,7 +9,7 @@ import streamlit as st
 st.set_page_config(
     page_title="스트림릿과의 만남",
     page_icon="🎨",
-    layout="centered"  # "centered" 또는 "wide"
+    layout="wide"  # "centered" 또는 "wide"
 )
 
 # 제목 표시
@@ -50,3 +50,31 @@ st.markdown("""
 3. 새로운 버튼을 추가하고, 클릭 시 다른 메시지가 나오도록 해보세요
 4. `st.warning()` 또는 `st.error()` 함수를 사용해보세요
 """)
+import streamlit as st
+
+# 1. 제목을 자신의 이름으로 변경
+st.title("이인의 Streamlit 앱")   # ← 여기를 본인 이름으로 바꾸세요
+
+# 2. 자기소개 내용을 본인의 정보로 변경
+st.subheader("자기소개")
+st.write("""
+안녕하세요, 저는 이인동입니다.  
+데이터 분석과 웹 애플리케이션 개발에 관심이 많고,  
+파이썬과 머신러닝을 공부하고 있습니다.  
+앞으로 스트림릿을 사용해서 다양한 대시보드를 만들어보고 싶습니다.
+""")  # ← 이 부분을 본인 소개로 수정하세요
+
+# 3. 새로운 버튼 추가 및 클릭 시 다른 메시지 출력
+if st.button("오늘의 한마디 보기"):
+    st.success("오늘도 즐거운 코딩 하세요! 🚀")
+
+# 버튼 하나 더 예시 (원하시면 삭제 가능)
+if st.button("응원의 메시지 받기"):
+    st.info("당신은 분명 해낼 수 있습니다. 계속 나아가 보아요!")
+
+# 4. st.warning() 또는 st.error() 사용
+st.warning("주의: 이 앱은 데모용입니다. 실제 서비스에서 사용할 때는 보안을 꼭 확인하세요.")
+
+# 에러 메시지도 예시로 하나 추가
+st.error("에러 예시: 데이터 로딩에 실패했습니다. 파일 경로를 다시 확인해 주세요.")
+
